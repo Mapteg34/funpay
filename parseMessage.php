@@ -20,7 +20,7 @@ function parseMessage(string $message): array
         'sum'      => null,
     ];
 
-    preg_match_all('/(^|[^\d])([\d]*)(\.|,)([\d]{2})($|[^\d])/', $message, $matches, PREG_SET_ORDER);
+    preg_match_all('/(^|[^\d])([\d]+)(\.|,)([\d]{2})($|[^\d])/', $message, $matches, PREG_SET_ORDER);
     if (empty($matches)) {
         throw new \Exception('Sum not found');
     }
@@ -42,7 +42,7 @@ function parseMessage(string $message): array
 
     $message = str_replace($matches[0][0], '', $message);
 
-    preg_match_all('/(^|[^\d])([\d]{1,})($|[^\d])/', $message, $matches, PREG_SET_ORDER);
+    preg_match_all('/(^|[^\d])([\d]+)($|[^\d])/', $message, $matches, PREG_SET_ORDER);
     if (empty($matches)) {
         throw new \Exception('Code not found');
     }
